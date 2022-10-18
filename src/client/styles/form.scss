@@ -22,9 +22,18 @@ input {
     font-family: inherit;
 }
 
-input[type="text"] {
+input[type="url"] {
    font-size: 1.25em;
+   
+   &.valid{
+    border: green solid 2px;
+   }
+   &.invalid{
+    border: red solid 2px;
+   }
 }
+
+in
 
 input[type="submit"] {
     font-size: 1.15em;
@@ -32,3 +41,8 @@ input[type="submit"] {
     border: none;
     cursor:pointer;
  }
+
+input[disabled="disabled"] {
+    border: none;
+    cursor: not-allowed;
+}

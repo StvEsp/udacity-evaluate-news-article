@@ -1,10 +1,11 @@
 var path = require("path");
 const express = require("express");
+const bodyParser = require("body-parser");
 require("dotenv").config();
 
 projectData = [];
-const mockAPIResponse = require("./mockAPI.js");
 const app = express();
+app.use(bodyParser.json());
 
 // designates what port the app will listen to for incoming requests
 app.listen(8081, function () {
@@ -20,30 +21,11 @@ app.get("/", function (req, res) {
   res.sendFile(path.resolve("src/client/views/index.html"));
 });
 
-app.get("/getEntry", function (req, res) {
+app.get("/getData", function (req, res) {
   res.send(projectData);
 });
 
 app.post("/evaluate", function (req, res) {
-  projectData.push(req.body);
+  projectData.push(res);
   console.log("projectData", projectData);
 });
-
-// const FormData = require("form-data");
-// const formdata = new FormData();
-// formdata.append("key", process.env.API_KEY);
-// formdata.append("txt", "YOUR TEXT HERE");
-
-// const requestOptions = {
-//   method: "POST",
-//   body: formdata,
-//   redirect: "follow",
-// };
-
-// const response = fetch("https://api.meaningcloud.com/lang-4.0/identification", requestOptions)
-//   .then(response => ({
-//     status: response.status,
-//     body: response.json()
-//   }))
-//   .then({status, body} => console.log(status, body))
-//   .catch(error => console.log('error', error));

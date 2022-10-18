@@ -34,3 +34,11 @@ section {
     max-width: 800px;
     margin: 50px auto;
 }
+
+strong {
+font-weight: $bold-weight;
+}
+
+#sectionTwo strong {
+    color:#CCC;
+}
